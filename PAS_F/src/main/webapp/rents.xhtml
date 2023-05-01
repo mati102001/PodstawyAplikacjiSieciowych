@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{RentBean.fetchRents}" />
+    </f:metadata>
+    <title>PAS 22/23</title>
+    <h:outputStylesheet name = "css/style.css"  />
+</h:head>
+<h:body>
+
+    <h1>BestRenting.Co</h1>
+
+    <h:form>
+        <h:dataTable value = "#{RentBean.allRents}" var = "rent">
+            <h:column>
+                <f:facet name = "header">UUID</f:facet>
+                #{rent.id}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Renter</f:facet>
+                #{rent.customer.login}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Product</f:facet>
+                #{rent.product.name}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Start Date</f:facet>
+                #{rent.startDate}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">End Date</f:facet>
+                #{rent.endDate.getTime() == 0 ? "-" : rent.endDate}
+            </h:column>
+            <h:column>
+                <h:commandButton rendered="#{rent.endDate.getTime() == 0}" action="#{RentBean.endRent(rent.id)}" value="End Rent"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <h:form>
+        <h:button value="Home Page" outcome="toHomePage" />
+        <h:commandButton action="#{RentBean.goToRentCreator()}" value="Add New Rent"/>
+    </h:form>
+    <p>${RentBean.message}</p>
+</h:body>
+</html>

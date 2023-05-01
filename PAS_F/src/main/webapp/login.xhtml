@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>PAS 22/23</title>
+    <h:outputStylesheet name = "css/style.css"  />
+</h:head>
+<h:body>
+    <h1>Login</h1>
+
+    <h:form>
+        <h2>Role: #{roles.getRole()}</h2>
+        username:
+        <h:inputText id="userLoginInput" value = "#{AuthorizationBean.login}" required="true" validatorMessage="Invalid login">
+            <f:validateLength minimum="6"/>
+        </h:inputText>
+        <br/>
+        password:
+        <h:inputSecret id="userPasswordInput" value = "#{AuthorizationBean.password}" required="true" validatorMessage="Invalid password">
+            <f:validateLength minimum="6"/>
+        </h:inputSecret>
+        <br/>
+
+        <br/>
+        <h:commandButton action="#{AuthorizationBean.login()}" value="Login"/>
+    </h:form>
+    <h:button value="Home Page" outcome="toHomePage" />
+    <p>#{AuthorizationBean.message}</p>
+</h:body>
+</html>

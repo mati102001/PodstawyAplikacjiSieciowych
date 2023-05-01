@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{UserBean.fetchUsers}" />
+    </f:metadata>
+    <title>PAS 22/23</title>
+    <h:outputStylesheet name = "css/style.css"  />
+</h:head>
+<h:body>
+    <h1>Add Rent</h1>
+
+    <h:form>
+        ${Roles.isAdministrator() || Roles.isManager() ? "User: " : "" }
+        <h:selectOneMenu value="#{RentBean.chosenCustomerId}" rendered="#{Roles.isAdministrator() || Roles.isManager()}">
+            <f:selectItems value="#{UserBean.allUsers}" var="user" itemValue="#{user.id}" itemLabel="#{user.login}" />
+        </h:selectOneMenu>
+
+        <br/>
+        Product:
+        <h:selectOneMenu value="#{RentBean.chosenProductId}">
+            <f:selectItems value="#{ProductBean.allProducts}" var="product" itemValue="#{product.id}" itemLabel="#{product.name}" />
+        </h:selectOneMenu>
+        <br/>
+
+        <br/>
+        <h:commandButton action="#{RentBean.addRent()}" value="Add Rent"/>
+
+
+
+
+
+    </h:form>
+    <h:button value="Show Rents" outcome="toRents" />
+    #{RentBean.chosenCustomerId}
+    #{RentBean.chosenProductId}
+</h:body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>PAS 22/23</title>
+    <h:outputStylesheet name = "css/style.css"  />
+</h:head>
+<h:body>
+    <h1>Edit User</h1>
+
+    <h:form>
+        <h2>#{UserBean.updatedUser.id}</h2>
+        Name:
+        <h:inputText id="userLoginUpdateInput" value = "#{UserBean.updatedUser.login}" required="true" validatorMessage="Invalid user login">
+        </h:inputText>
+        <br/>
+        Password:
+        <h:inputSecret id="userPasswordUpdateInput" value = "#{UserBean.updatedUser.password}" required="true" validatorMessage="Invalid user password">
+        </h:inputSecret>
+        <br/>
+        <br/>
+        <h:commandButton action="#{UserBean.updateUser()}" value="submit"/>
+    </h:form>
+    <h:button value="Show Users" outcome="toUsersPage" />
+
+</h:body>
+</html>

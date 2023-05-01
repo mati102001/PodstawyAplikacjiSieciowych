@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>PAS 22/23</title>
+    <h:outputStylesheet name = "css/style.css"  />
+</h:head>
+<h:body>
+
+
+    <h1>Register</h1>
+
+    <h:form>
+        username:
+
+        <h:inputText id="userLoginInput" value = "#{UserBean.newUser.login}" required="true" validatorMessage="Invalid login">
+            <f:validateLength minimum="6"/>
+        </h:inputText>
+        <br/>
+        password:
+        <h:inputSecret id="userPasswordInput" value = "#{UserBean.newUser.password}" required="true" validatorMessage="Invalid password">
+            <f:validateLength minimum="6"/>
+        </h:inputSecret>
+        <br/>
+
+        <br/>
+        <h:commandButton rendered="#{!Roles.isGuest()}" action="#{UserBean.addUser()}" value="Add user"/>
+        <h:commandButton rendered="#{Roles.isGuest()}" action="#{UserBean.addUser()}" value="Register"/>
+    </h:form>
+    <h:button rendered="#{!Roles.isGuest()}" value="Show Users" outcome="toUsersPage" />
+    <h:button rendered="#{Roles.isGuest()}" value="HomePage" outcome="toHomePage" />
+    <p>#{UserBean.message}</p>
+</h:body>
+</html>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+        xmlns="https://jakarta.ee/xml/ns/jakartaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_3_0.xsd"
+        version="3.0"
+>
+    <!-- Your faces config here. -->
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toProducts</from-outcome>
+            <to-view-id>/products.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toUsers</from-outcome>
+            <to-view-id>/users.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toUserCreatorPage</from-outcome>
+            <to-view-id>/userAdd.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toRents</from-outcome>
+            <to-view-id>/rents.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toLogin</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toChangePassword</from-outcome>
+            <to-view-id>/changePassword.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+<!--login-->
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toHomePage</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+<!--products-->
+    <navigation-rule>
+        <from-view-id>/products.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toHomePage</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/products.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toProductEditPage</from-outcome>
+            <to-view-id>/productEdit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/products.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toProductCreatorPage</from-outcome>
+            <to-view-id>/productAdd.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/productEdit.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toProducts</from-outcome>
+            <to-view-id>/products.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/productAdd.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toProducts</from-outcome>
+            <to-view-id>/products.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+    <!--Users-->
+    <navigation-rule>
+        <from-view-id>/users.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toHomePage</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/users.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toUserCreatorPage</from-outcome>
+            <to-view-id>/userAdd.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/users.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toUserEditPage</from-outcome>
+            <to-view-id>/userEdit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/users.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>UserDetails</from-outcome>
+            <to-view-id>/userDetails.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/userEdit.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toUsersPage</from-outcome>
+            <to-view-id>/users.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/userAdd.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toUsersPage</from-outcome>
+            <to-view-id>/users.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/userAdd.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toHomePage</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/userDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toUsersPage</from-outcome>
+            <to-view-id>/users.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/userDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toHomePage</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/changePassword.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toHomePage</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!--Rents-->
+
+    <navigation-rule>
+        <from-view-id>/rents.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toHomePage</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/rents.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toRentCreator</from-outcome>
+            <to-view-id>/rentAdd.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+    <navigation-rule>
+        <from-view-id>/rentAdd.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toRents</from-outcome>
+            <to-view-id>/rents.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+
+</faces-config>
+
+
+

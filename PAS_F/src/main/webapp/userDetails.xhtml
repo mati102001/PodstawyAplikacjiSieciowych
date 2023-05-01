@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>PAS 22/23</title>
+    <h:outputStylesheet name = "css/style.css"  />
+</h:head>
+<h:body>
+
+    <h1>BestRenting.Co</h1>
+    <h2>#{RentBean.currentUser.login}</h2>
+    <p>User active rents</p>
+    <h:form>
+        <h:dataTable value = "#{RentBean.userCurrentRents}" var = "rent">
+            <h:column>
+                <f:facet name = "header">UUID</f:facet>
+                #{rent.id}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Renter</f:facet>
+                #{rent.customer.login}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Product</f:facet>
+                #{rent.product.name}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Start Date</f:facet>
+                #{rent.startDate}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">End Date</f:facet>
+                #{rent.endDate.getTime() == 0 ? null : rent.endDate}
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <p>User past rents</p>
+    <h:form>
+        <h:dataTable value = "#{RentBean.userPastRents}" var = "rent">
+            <h:column>
+                <f:facet name = "header">UUID</f:facet>
+                #{rent.id}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Renter</f:facet>
+                #{rent.customer.login}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Product</f:facet>
+                #{rent.product.name}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Start Date</f:facet>
+                #{rent.startDate}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">End Date</f:facet>
+                #{rent.endDate.getTime() == 0 ? null : rent.endDate}
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <h:form>
+        <h:button value="Home Page" outcome="toHomePage" />
+        <h:button value="Users" outcome="toUsersPage" />
+    </h:form>
+    <p>#{RentBean.message}</p>
+</h:body>
+</html>

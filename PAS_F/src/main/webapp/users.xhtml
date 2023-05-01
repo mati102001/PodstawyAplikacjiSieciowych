@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{UserBean.filter}" />
+    </f:metadata>
+    <title>PAS 22/23</title>
+    <h:outputStylesheet name = "css/style.css"  />
+</h:head>
+<h:body>
+
+    <h1>BestRenting.Co</h1>
+
+    <h:form>
+        <h:dataTable value = "#{UserBean.allUsers}" var = "user">
+            <h:column>
+                <f:facet name = "header">UUID</f:facet>
+                #{user.id}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">login</f:facet>
+                #{user.login}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Unlocked</f:facet>
+                #{!user.blocked ? "&#9989;" : "&#10060;"}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">is online</f:facet>
+                #{user.online ? "&#9989;" : "&#10060;"}
+            </h:column>
+            <h:column>
+                <h:commandButton rendered="#{!user.blocked}" action="#{UserBean.blockUser(user.id)}" value="Block"/>
+                <h:commandButton rendered="#{user.blocked}" action="#{UserBean.unlockUser(user.id)}" value="Unlock"/>
+            </h:column>
+            <h:column>
+                <h:commandButton action="#{UserBean.goToUserEdit(user.id)}" value="Edit"/>
+
+            </h:column>
+            <h:column>
+                <h:commandButton action="#{RentBean.goToUserRents(user)}" value="Show Rents"/>
+
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <h:form>
+        <h:button value="Home Page" outcome="toHomePage" />
+        <h:commandButton action="#{UserBean.goToUserCreator()}" value="Add New User"/>
+    </h:form>
+    <h:form>
+        <h:inputText id="userSearchInput" value = "#{UserBean.searchPhrase}" required="true" validatorMessage="Invalid name">
+        </h:inputText>
+        <h:commandButton action="#{UserBean.filter()}" value="Filter"/>
+        <h:commandButton action="#{UserBean.resetFilter()}" value="Reset"/>
+    </h:form>
+    <p>#{UserBean.message}</p>
+
+</h:body>
+</html>
